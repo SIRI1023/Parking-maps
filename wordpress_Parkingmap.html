@@ -1,0 +1,858 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-groupedlayercontrol/0.6.1/leaflet.groupedlayercontrol.min.js"></script>
+<script src="https://unpkg.com/leaflet.pattern/dist/leaflet.pattern.js"></script>
+<div id="map" style="height: 400px;"></div>
+<div id="popup-content" style="display: none;">
+<h3 style="color: #501214; font-size: 15px; padding: 0px;"><b>Edward Gary Street Garage</b></h3>
+<p style="font-size: 10px;">Pay to Park Garages allow visitors to purchase parking.</p>
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 3px;">
+<thead>
+<tr style="background-color: #ac9155; color: white; text-align: left;">
+<th style="padding: 6px;">Hours</th>
+<th style="padding: 6px;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">0 min - 1 hr</td>
+<td style="padding: 6px;">$3.00</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">1 hr - 2 hrs</td>
+<td style="padding: 6px;">$6.00</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">2 hrs - 3 hrs</td>
+<td style="padding: 6px;">$8.00</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">3 hrs - 4 hrs</td>
+<td style="padding: 6px;">$10.00</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">4 hrs - 5 hrs</td>
+<td style="padding: 6px;">$12.00</td>
+</tr>
+<tr>
+<td style="padding: 6px;">5+ hrs</td>
+<td style="padding: 6px;">$14.00</td>
+</tr>
+</tbody>
+</table>
+<p style="font-size: 10px;">Garage Clearance: 8'2"</p>
+
+</div>
+<div id="popup-content1" style="display: none;">
+<h3 style="color: #501214; font-size: 15px; padding: 0px;"><b>LBJ Student Center Garage</b></h3>
+<p style="font-size: 10px;">Pay to Park Garages allow visitors to purchase parking.</p>
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 3px;">
+<thead>
+<tr style="background-color: #ac9155; color: white; text-align: left;">
+<th style="padding: 6px;">Hours</th>
+<th style="padding: 6px;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">0 min - 1 hr</td>
+<td style="padding: 6px;">$3.00</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">1 hr - 2 hrs</td>
+<td style="padding: 6px;">$6.00</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">2 hrs - 3 hrs</td>
+<td style="padding: 6px;">$8.00</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">3 hrs - 4 hrs</td>
+<td style="padding: 6px;">$10.00</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+<td style="padding: 6px;">4 hrs - 5 hrs</td>
+<td style="padding: 6px;">$12.00</td>
+</tr>
+<tr>
+<td style="padding: 6px;">5+ hrs</td>
+<td style="padding: 6px;">$14.00</td>
+</tr>
+</tbody>
+</table>
+<p style="font-size: 10px;">Garage Clearance: 7'0"</p>
+
+</div>
+<script>var map = L.map('map').setView([29.88887, -97.94337], 15); 
+var bounds = [[29.8815, -97.9500], [29.8940, -97.9246]];
+map.fitBounds(bounds);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map); 
+var dollarSign = L.icon({iconUrl: 'http://universitystar.com/wp-content/uploads/2024/08/map-pointer.png',iconSize: [30, 50],iconAnchor:[12, 41], popupAnchor: [1, -34]}); 
+var marker1 = L.marker([29.889815, -97.940960], {icon: dollarSign}).bindPopup('<span style="font-size: 15px;color: #501214;"><strong>Pay-by-App</strong></span><br><span style="font-size: 15px;color: #501214;"><strong>Pleasant St. Garage</strong></span><br>Daily temporary permit locations are available throughout campus to allow visitors to purchase parking.<br><strong>Pay-by-App:</strong><br> Download the AMP Park app, available on the <a href="https://www.apple.com/ios/app-store/" target="_blank" style="color: #007bff;">App Store</a> or on <a href="https://play.google.com/store" target="_blank" style="color: #007bff;">Google Play</a>.<br>Permits are also available at <a href="https://www.aimsmobilepay.com" target="_blank" style="color: #007bff;">aimsmobilepay.com</a><br>Pay-by-App permits are not available at this location until after 5 p.m.');
+marker1.addTo(map);
+var marker2 = L.marker([29.889736, -97.948768], {icon: dollarSign}).bindPopup('<span style="font-size: 15px;color: #501214;"><strong>Pay-by-App</strong></span><br><span style="font-size: 15px;color: #501214;"><strong>Mitte</strong></span><br>Daily temporary permit locations are available throughout campus to allow visitors to purchase parking.<br><strong>Pay-by-App:</strong><br> Download the AMP Park app, available on the <a href="https://www.apple.com/ios/app-store/" target="_blank" style="color: #007bff;">App Store</a> or on <a href="https://play.google.com/store" target="_blank" style="color: #007bff;">Google Play</a>. <br>Permits are also available at <a href="https://www.aimsmobilepay.com" target="_blank" style="color: #007bff;">aimsmobilepay.com</a><br>Pay-by-App permits are not available at this location until after 5 p.m.');
+marker2.addTo(map);
+var marker3 = L.marker([29.888412, -97.931351], {icon: dollarSign}).bindPopup('<span style="font-size: 15px;color: #501214;"><strong>Pay-by-App</strong></span><br><span style="font-size: 15px;color: #501214;"><strong>University Event Center Lot</strong></span><br>Daily temporary permit locations are available throughout campus to allow visitors to purchase parking.<br><strong>Pay-by-App:</strong><br> Download the AMP Park app, available on the <a href="https://www.apple.com/ios/app-store/" target="_blank" style="color: #007bff;">App Store</a> or on <a href="https://play.google.com/store" target="_blank" style="color: #007bff;">Google Play</a>.<br>Permits are also available at <a href="https://www.aimsmobilepay.com" target="_blank" style="color: #007bff;">aimsmobilepay.com</a><br>Pay-by-App permits are not available at this location until after 5 p.m.');
+marker3.addTo(map);
+var marker4 = L.marker([29.889922, -97.930643], {icon: dollarSign}).bindPopup('<span style="font-size: 15px;color: #501214;"><strong>Pay-by-App</strong></span><br><span style="font-size: 15px;color: #501214;"><strong>Aquarena Lot</strong></span><br>Daily temporary permit locations are available throughout campus to allow visitors to purchase parking.<br><strong>Pay-by-App:</strong><br> Download the AMP Park app, available on the <a href="https://www.apple.com/ios/app-store/" target="_blank" style="color: #007bff;">App Store</a> or on <a href="https://play.google.com/store" target="_blank" style="color: #007bff;">Google Play</a>.<br>Permits are also available at <a href="https://www.aimsmobilepay.com" target="_blank" style="color: #007bff;">aimsmobilepay.com</a><br>Pay-by-App permits are not available at this location until after 5 p.m.');
+marker4.addTo(map);
+var marker5 =L.marker([29.888685, -97.926617], {icon: dollarSign}).bindPopup('<span style="font-size: 15px;color: #501214;"><strong>Pay-by-App</strong></span><br><span style="font-size: 15px;color: #501214;"><strong>Bobcat Stadium West</strong></span><br>Daily temporary permit locations are available throughout campus to allow visitors to purchase parking.<br><strong>Pay-by-App:</strong><br> Download the AMP Park app, available on the <a href="https://www.apple.com/ios/app-store/" target="_blank" style="color: #007bff;">App Store</a> or on <a href="https://play.google.com/store" target="_blank" style="color: #007bff;">Google Play</a>.<br>Permits are also available at <a href="https://www.aimsmobilepay.com" target="_blank" style="color: #007bff;">aimsmobilepay.com</a><br>Pay-by-App permits are not available at this location until after 5 p.m.');
+marker5.addTo(map);
+var marker6 = L.marker([29.891610, -97.923548], {icon: dollarSign}).bindPopup('<span style="font-size: 15px;color: #501214;"><strong>Pay-by-App</strong></span><br><span style="font-size: 15px;color: #501214;"><strong>Bobcat Stadium East</strong></span><br>Daily temporary permit locations are available throughout campus to allow visitors to purchase parking.<br><strong>Pay-by-App:</strong><br> Download the AMP Park app, available on the <a href="https://www.apple.com/ios/app-store/" target="_blank" style="color: #007bff;">App Store</a> or on <a href="https://play.google.com/store" target="_blank" style="color: #007bff;">Google Play</a>.<br>Permits are also available at <a href="https://www.aimsmobilepay.com" target="_blank" style="color: #007bff;">aimsmobilepay.com</a><br>Pay-by-App permits are not available at this location until after 5 p.m.');
+marker6.addTo(map);
+var marker7 = L.marker([29.892979, -97.923053], {icon: dollarSign}).bindPopup('<span style="font-size: 15px;color: #501214;"><strong>Pay-by-App</strong></span><br><span style="font-size: 15px;color: #501214;"><strong>Bobcat Village Fields</strong></span><br>Daily temporary permit locations are available throughout campus to allow visitors to purchase parking.<br><strong>Pay-by-App:</strong><br> Download the AMP Park app, available on the <a href="https://www.apple.com/ios/app-store/" target="_blank" style="color: #007bff;">App Store</a> or on <a href="https://play.google.com/store" target="_blank" style="color: #007bff;">Google Play</a>. Permits are also available at <a href="https://www.aimsmobilepay.com" target="_blank" style="color: #007bff;">aimsmobilepay.com</a><br>Pay-by-App permits are not available at this location until after 5 p.m.');
+marker7.addTo(map);
+var marker8 = L.marker([29.894200, -97.929192], {icon: dollarSign}).bindPopup('<span style="font-size: 15px;color: #501214;"><strong>Pay-by-App</strong></span><br><span style="font-size: 15px;color: #501214;"><strong>Meadows Center</strong></span><br>Daily temporary permit locations are available throughout campus to allow visitors to purchase parking.<br><strong>Pay-by-App:</strong><br>Download the AMP Park app, available on the <a href="https://www.apple.com/ios/app-store/" target="_blank" style="color: #007bff;">App Store</a> or on <a href="https://play.google.com/store" target="_blank" style="color: #007bff;">Google Play</a>.Permits are also available at <a href="https://www.aimsmobilepay.com" target="_blank" style="color: #007bff;">aimsmobilepay.com</a>.<br>Pay-by-App permits are not available at this location until after 5 p.m.');
+marker8.addTo(map);
+var latlngs_Orange = [[29.886341, -97.943783], [29.886399, -97.943383], [29.885148, -97.943211], [29.885016, -97.944084], [29.885766, -97.944192],[29.885837, -97.943696]];
+var polygon_O = L.polygon(latlngs_Orange, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FFA500',  
+    fillOpacity: 1      
+}).addTo(map);
+polygon_O.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Cypress Garage (CYPN)</strong></span><br><span style='color: #FFA500;'><b>Cypress Apartment Resident</b></span><br>Cypress Apartment Resident (Orange) parking areas are reserved 24/7 for Cypress residents.");
+var latlngs_Blue = [[29.885293, -97.945133], [29.885246, -97.945496], [29.884707, -97.945410], [29.884748, -97.945029] ];
+var polygon_Blue = L.polygon(latlngs_Blue, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#0000FF',  
+    fillOpacity: 1      
+}).addTo(map);
+polygon_Blue.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Balcones Garage (BALG)</strong></span><br><span style='color: #0000FF;'><b>Balcones Apartment Resident</b></span><br>Balcones Apartment Resident (Blue) parking areas are reserved 24/7 for those Balcones residents and Cypress residents with a Cypress Apartment Resident (Orange) permit.");
+var latlngs_Green = [[29.886106, -97.946062], [29.886282, -97.945259], [29.886614, -97.945322], [29.886552, -97.945814], [29.886376, -97.946251]];
+var polygon_G = L.polygon(latlngs_Green, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 1     
+}).addTo(map);
+polygon_G.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Lindsey St Lot (115)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red = [[29.886376, -97.946251], [29.886653, -97.946500], [29.886912, -97.945954], [29.886966, -97.945444], [29.886614, -97.945322], [29.886552, -97.945814]];
+var polygon_R = L.polygon(latlngs_Red, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Lindsey St Lot (R54)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Green1 = [[29.886814, -97.944247], [29.886764, -97.944236], [29.886773, -97.944153], [29.886716, -97.944142], [29.886714, -97.944116], [29.886680, -97.944111], [29.886676, -97.944135], [29.886615, -97.944128], [29.886601, -97.944208], [29.886553, -97.944198], [29.886580, -97.944198], [29.886594, -97.944095], [29.886620, -97.943909], [29.886639, -97.943911], [29.886653, -97.943811], [29.886636, -97.943803], [29.886673, -97.943467], [29.886884, -97.943505], [29.886846, -97.943772], [29.886749, -97.943754], [29.886721, -97.943949], [29.886820, -97.943965]];
+var polygon_G1 = L.polygon(latlngs_Green1, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G1.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>San Jacinto Hall (112)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.<br>Garage Clearance: 7'4");
+var latlngs_Green2 = [[29.887093, -97.944469], [29.887245, -97.943496], [29.887096, -97.943455], [29.886956, -97.944453]];
+var polygon_G2 = L.polygon(latlngs_Green2, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G2.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>San Jacinto Hall (112)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var stripes = new L.StripePattern({
+    weight: 4,
+    spaceWeight: 4,
+    color: '#008000',
+    spaceColor: '#FF0000',
+    opacity: 1.0,
+    spaceOpacity: 1
+});
+stripes.addTo(map);
+var latlngs_RG = [[29.887614, -97.944485], [29.887674, -97.944061], [29.887739, -97.944066], [29.887749, -97.943997], [29.887688, -97.943983], [29.887749, -97.943463], [29.887414, -97.943412], [29.887274, -97.944420]];
+var polygon_RG = L.polygon(latlngs_RG, {
+    color: '#000000', 
+    weight: 1,
+    fillPattern: stripes,
+    fillOpacity: 0.7     
+}).addTo(map);
+polygon_RG.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Woods St. Garage (R42)</strong></span></span><br>" +
+                   "<span style='color: #FF0000;'><b>Red/Restricted</b></span> & " +
+                   "<span style='color: #00FF00;'><b>Residence Hall</b></span><br>" +
+                   "Levels 1 and 2 are reserved for vehicles displaying a Red Restricted Permit from 7 a.m. until 5 p.m., Monday through Friday.<br>" +
+                   "Level 3 and above are designated for Resident Hall permits.<br>" +
+                   "Garage Clearance:<br>First Level - 8'2<br>All Other Levels - 7'2");
+var latlngs_RG1 = [[29.890424, -97.943790], [29.891010, -97.943149], [29.891384, -97.943611], [29.890901, -97.944144], [29.890926, -97.944180], [29.890864, -97.944250], [29.890813, -97.944189], [29.890770, -97.944229]];
+var polygon_RG1 = L.polygon(latlngs_RG1, {
+    color: '#000000', 
+    weight: 1,
+    fillPattern: stripes,
+    fillOpacity: 0.7     
+}).addTo(map);
+polygon_RG1.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Matthews St. Garage (R46)</strong></span></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span> & <span style='color: #00FF00;'><b>Residence Hall</b></span><br>Levels 1 and 2 are reserved for vehicles displaying a Red Restricted Permit from 7 a.m. until 5 p.m., Monday through Friday.<br>Level 3 and above are designated for Resident Hall permits.<br>Garage Clearance: 8'2");
+var latlngs_Red1 = [[29.888417, -97.945531], [29.888802643452316, -97.94522834184883], [29.88894405729476, -97.94407899731267], [29.88847706198263, -97.94337345908257],[29.88843102007279, -97.9433620794337], [29.888381689431544, -97.94375278071165], [29.88876317908838, -97.94433314280418], [29.888759890390663, -97.94443555964403], [29.888532969987395, -97.94462142724228], [29.888470484568224, -97.94501971495285], [29.88822054249997, -97.94521696219996]];
+var polygon_R1 = L.polygon(latlngs_Red1, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R1.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Matthews St. Garage (R46)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 6 p.m. Monday through Friday.<br>Garage Clearance: 7'0");
+var latlngs_Red2 = [[29.888348279149046, -97.94582982906735], [29.888290204355123, -97.94576204790025], [29.888330303621203, -97.94571181009404], [29.888185807914372, -97.94556029924993],[29.88814916542908, -97.9456153216091], [29.88812592694179, -97.94558587314204], [29.888082905639966, -97.9456314706944], [29.888024768713677, -97.94557112099214], [29.887921866274695, -97.9457327240839], [29.887965469015757, -97.94577966274072], [29.887646296503092, -97.94619674624522], [29.88769222485054, -97.9462483787742], [29.88769222485054, -97.9462483787742], [29.88761839066208, -97.94673050583509], [29.887571299536965, -97.94672447086492], [29.887542230929846, -97.94701079667807], [29.887591066184534, -97.94702219606619], [29.887581182861105, -97.94709126294694], [29.887580020117106, -97.94709796846935], [29.887527115250926, -97.94709327460366], [29.88751316231451, -97.94720726848453], [29.887560253467097, -97.94722135008159], [29.887600949507576, -97.94741513968779], [29.88757536914159, -97.94746476055359], [29.88764571513225, -97.94754388571795], [29.88764745924709, -97.94754656792692], [29.887678853308984, -97.94750097037456], [29.88771489833229, -97.94753181578], [29.887721874786624, -97.9475747311234], [29.88796081805594, -97.94749024154068], [29.88794628381035, -97.94743123294352], [29.887967213124263, -97.94742184521067], [29.887943376961918, -97.94733534397166], [29.887925354493596, -97.947339367283], [29.887910238872614, -97.94729444028118], [29.88797767777909, -97.94727298260887], [29.887968375863732, -97.94720592738481], [29.887956167098537, -97.94713283718883], [29.88793465641333, -97.94706175865134], [29.88773931592029, -97.94712076724869], [29.887720712044228, -97.94710199178596], [29.887752106084086, -97.94668893160012], [29.887692224853314, -97.94667485000309], [29.88773873455133, -97.94629129411139], [29.88792477312545, -97.94601435603354], [29.88800907173951, -97.94607202352586], [29.888088137961237, -97.94603581370383], [29.888124182835902, -97.94606665910636]];
+var polygon_R2 = L.polygon(latlngs_Red2, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R2.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Science (R20)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.<br>Garage Clearance: 7'0");
+var latlngs_Red3 = [[29.889010202158655, -97.94693788441816], [29.889131770888415, -97.946784086288], [29.889320132306885, -97.94699329859654], [29.889364315797938, -97.94695977098299],[29.889487564380044, -97.94709924585536], [29.889451519999156, -97.94715020782795], [29.889548025892914, -97.94724542625043], [29.889438730054437, -97.94742245204998]];
+var polygon_R3 = L.polygon(latlngs_Red3, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R3.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Mitte Service Drive (R43)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red4 = [[29.88948883533962, -97.94885336872417], [29.889633536877604, -97.94868267398331], [29.889743707225925, -97.94876802135373], [29.889778238205565, -97.9487054332821],[29.889686155566636, -97.94862577573636], [29.88974370722964, -97.94853473854015], [29.88981770217135, -97.94857646392124], [29.889868676432567, -97.9484664606438], [29.88970259890495, -97.94831852520173], [29.889651624558798, -97.94834318110874], [29.889592428511207, -97.94828248964531], [29.889641758553314, -97.94825973034655], [29.8895288092533, -97.94816153143873], [29.889491602165634, -97.94820176457497], [29.889359051802952, -97.94804887865719], [29.889270684796564, -97.94807033632988], [29.88924743030477, -97.94797914122162], [29.889170690454602, -97.94803672261133], [29.889103252355703, -97.94816345699059], [29.889138715499616, -97.94818290300643], [29.889120111883724, -97.94822112448435], [29.8890660451082, -97.94813998765956], [29.88909395054439, -97.94804745144616], [29.889068951923832, -97.94802129990954], [29.889014303755232, -97.94803739316426], [29.888913727795284, -97.94806153304602], [29.888963143742032, -97.94826672204094], [29.88904337193282, -97.94825465210006], [29.889076509644966, -97.94829689689314], [29.889070114648753, -97.94835322328389], [29.88901895466421, -97.948380715927]];
+var polygon_R4 = L.polygon(latlngs_Red4, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R4.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Mitte (R40)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red5 = [[29.88957397048325, -97.94889305663433], [29.889699544244717, -97.94902314377491], [29.889436837520662, -97.94935932588155], [29.889400793121425, -97.94934189152251], [29.8893775386634, -97.94936200809063], [29.88935312147664, -97.94939285349508], [29.889390328615985, -97.94945856761764], [29.889347307859843, -97.94951489400842], [29.889306612532902, -97.94947197866307], [29.889285683501146, -97.94947600197669], [29.889325216112994, -97.94952428174021], [29.888882217411428, -97.9500432891862], [29.88875547989004, -97.94990381431384]];
+var polygon_R5 = L.polygon(latlngs_Red5, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R5.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>FCS (R18)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red6 = [[29.88786486820161, -97.95042994279511], [29.88783064713926, -97.95047054107516], [29.887847268799575, -97.95050211751521], [29.8878189142009, -97.95055060990529], [29.88778567086803, -97.95050437297522], [29.887739716830833, -97.95054271579527], [29.88759305486826, -97.9503081479549], [29.88772858515921, -97.95019567712878]];
+var polygon_R6 = L.polygon(latlngs_Red6, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R6.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>ROTC (R21)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red7 = [[29.887110547357604, -97.94981584222613], [29.88707450211725, -97.94991240175317], [29.886946599546274, -97.94986814530328], [29.886896601223903, -97.94981718333068], [29.886769636683407, -97.9496213820702], [29.886936491665583, -97.94948257775167], [29.88711729936365, -97.94969849558255], [29.88712950823159, -97.94973671706201]];
+var polygon_R7 = L.polygon(latlngs_Red7, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R7.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>CDC (R17)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red8 = [[29.885258142973235, -97.95081936497895], [29.8853831407864, -97.95078382570857], [29.885411047253523, -97.95073487539281], [29.885436628175473, -97.95061954040725], [29.885433721252916, -97.95049347658154], [29.885406396176837, -97.95040697533858], [29.88526279405811, -97.95037478882958]];
+var polygon_R8 = L.polygon(latlngs_Red8, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red9 = [[29.88252977232908, -97.94594893550835], [29.882746513737104, -97.94620451502998], [29.88304012040609, -97.9458658861355], [29.88319767927083, -97.94593562357089], [29.883252330627013, -97.94576999716034], [29.883029655232956, -97.9457364695501], [29.882743606739513, -97.94603486530629], [29.882584302954434, -97.94587058000116]];
+var polygon_R9 = L.polygon(latlngs_Red9, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R9.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>400 W Hopkins (R50)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red10 = [[29.887179629213982, -97.94680155686967], [29.88705958977084, -97.94672569254041], [29.88717551827652, -97.9464393046974], [29.887205939209593, -97.94645827077973], [29.887164829838373, -97.94660336130947], [29.887170585151377, -97.94667827733461], [29.887205117022344, -97.94671620949926]];
+var polygon_R10 = L.polygon(latlngs_Red10, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red11 = [[29.886665906265716, -97.94686197546577], [29.886761252102637, -97.94695987609732], [29.88684031931288, -97.94679357913411], [29.88676822862371, -97.94672920611612]];
+var polygon_R11 = L.polygon(latlngs_Red11, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red12 = [[29.89082832244348, -97.94584702786722], [29.89081727673479, -97.94579405423781], [29.8908039056121, -97.9457618677288], [29.890633568977044, -97.94557076033378], [29.890760885465458, -97.94539440509094], [29.89094982515971, -97.94557411309623], [29.890924245653103, -97.94562038120294], [29.890966684376416, -97.9455727719917], [29.891038772029376, -97.94563580390516], [29.89101958741716, -97.94565390881647], [29.891057375286195, -97.94569213029594], [29.89100389091349, -97.94576253828438], [29.890960870853736, -97.94572834011856], [29.890934128645068, -97.94574175116398]];
+var polygon_R12 = L.polygon(latlngs_Red12, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R12.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>SHC (R31)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red13 = [[29.886287343112205, -97.9432207893804], [29.886439446747012, -97.94324630699741], [29.886451200200025, -97.943185702657], [29.88653416571141, -97.94318968978465], [29.886550758805406, -97.94308044248682], [29.88654384501658, -97.94300707933792], [29.88659500704256, -97.94300707933792], [29.886656145426926, -97.94256643048304], [29.88660905384727, -97.94255436054218], [29.88661951864467, -97.94248395255372], [29.886667191596718, -97.94248730531507], [29.88668870255629, -97.9423719703304], [29.88658696149182, -97.94230960897002], [29.886607309712506, -97.9422573058929], [29.88657998495807, -97.94224925926565], [29.88655033468414, -97.94230826786549], [29.88652533542674, -97.9423981218698], [29.88655789259794, -97.94241019181068], [29.886554985708102, -97.94245109549921], [29.88651370786303, -97.94244774273787], [29.886478825163756, -97.94264354399262], [29.886527660939343, -97.94265293172438], [29.886470685865355, -97.94270188203664], [29.88643754728678, -97.94299156061268], [29.88647533689278, -97.94300228944901], [29.8864794065418, -97.9431068956033], [29.88644161693733, -97.94310622505103], [29.886441035557784, -97.94305660418281], [29.886307318378794, -97.94303849927154]];
+var polygon_R13 = L.polygon(latlngs_Red13, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R13.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Admissions (R22)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red14 = [[29.887961883135155, -97.94172264240014], [29.887476795153066, -97.94163539842148], [29.887504749439852, -97.94144384099006], [29.88786250920064, -97.94150591964278], [29.887852731755206, -97.94158598847292], [29.88795505094796, -97.94160783551641]];
+var polygon_R14 = L.polygon(latlngs_Red14, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R14.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Nueces (R25)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red15 = [[29.889764643669597, -97.9410480095855], [29.89017528767532, -97.94118559264571], [29.89036301008593, -97.9404886555046], [29.88988588159966, -97.94033077330432], [29.889729445533238, -97.94096004664534], [29.88977051002444, -97.94097809032537]];
+var polygon_R15 = L.polygon(latlngs_Red15, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R15.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Pleasant Garage (R5)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.<br>Garage Clearance: 7'3");
+var latlngs_Red16 = [[29.88695221722047, -97.940125901965], [29.886930193008958, -97.94033971442175], [29.887368549391812, -97.94040408743707], [29.887395292557013, -97.94030216349616], [29.88743250042712, -97.94028204692886], [29.88747319651915, -97.94000175609129], [29.88746505730207, -97.93997761621056], [29.887444127883686, -97.93998432173298], [29.887358084673018, -97.93993067755355], [29.88729529633728, -97.93990921988177], [29.887267390397597, -97.94016402973409], [29.887308601623563, -97.9401759163546], [29.887239326118884, -97.94023503925186], [29.887241281620057, -97.94017301410436]];
+var polygon_R16 = L.polygon(latlngs_Red16, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R16.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Commons South (R48)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red17 = [[29.887227565353466, -97.93830616526525], [29.887178677805423, -97.93866140020097], [29.88745244776564, -97.93870763712913], [29.887486668957827, -97.93865463382126], [29.887503290675493, -97.93868733798993], [29.88749742418722, -97.93873583037801], [29.88746798589087, -97.93872686902432], [29.88743572018967, -97.9390212065425], [29.887565471483505, -97.93903419322045], [29.887588726364243, -97.93899865395159], [29.887606167521263, -97.93900200671278], [29.887617213585763, -97.93892221099587], [29.887543960713998, -97.93888398951802], [29.887546867575004, -97.9388772839956], [29.887591633223973, -97.93887929565233], [29.88762360867574, -97.93863454408009], [29.88757128520473, -97.93862247413973], [29.8875776802974, -97.93857821768981], [29.887617794958388, -97.93861308640643], [29.887638724340334, -97.93852725571934], [29.88758988910898, -97.93848635203251], [29.88756140187822, -97.93844209558338], [29.887513729353792, -97.93842868453851], [29.887546867574393, -97.93839448637412], [29.887530007779336, -97.9383723581501], [29.887357340056617, -97.93834754771568], [29.88730152820417, -97.93839180416371], [29.887276529135132, -97.93836833483522], [29.887279436002196, -97.93830865568435]];
+var polygon_R17 = L.polygon(latlngs_Red17, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R17.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Education (R49)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red18 = [[29.88807005659642, -97.9381504930505], [29.888050698281514, -97.93814012651903], [29.887982252780827, -97.93813374711503], [29.887969808139285, -97.9381951488784], [29.887847608877788, -97.93816252636046], [29.887845864766458, -97.93810955273328], [29.887696452446217, -97.93808071898657], [29.88768540639047, -97.93814308034516], [29.887410998715755, -97.9381028472102], [29.88744538113067, -97.9378388663605], [29.887580273290812, -97.93752113357608], [29.88810629792873, -97.93760154880064], [29.888172274801498, -97.93761156915058], [29.88822285385394, -97.93757535932893], [29.888308896318218, -97.93754116116453], [29.888466446857084, -97.93781608758727], [29.88824959678996, -97.93800317166641], [29.887926936969645, -97.93795086859147], [29.8879228673797, -97.93787777839701], [29.888007165994374, -97.93780468820253], [29.88803366402428, -97.93767915395087], [29.88783850531462, -97.93787934260422], [29.887823986545076, -97.93787934260422], [29.887812924623983, -97.9379343649636], [29.88750595581946, -97.93788253230605], [29.887508029936136, -97.93791203704947], [29.888164140021292, -97.93802367662178], [29.888155843608907, -97.93807630670467], [29.888163448653607, -97.93810421659713]];
+var polygon_R18 = L.polygon(latlngs_Red18, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R18.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>JCK/Moon (R9)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red19 = [[29.888327060526183, -97.93820676587978], [29.88836543078376, -97.93826644503045], [29.88865611407225, -97.9380277284309], [29.888518911665685, -97.93782455109805], [29.888286364781063, -97.93802638732467], [29.8883654307817, -97.93816653274344]];
+var polygon_R19 = L.polygon(latlngs_Red19, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R19.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>JCK/Moon (R9)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red20 = [[29.889086338189497, -97.93707623879344], [29.889258264596187, -97.9373606265307], [29.88935150620523, -97.93729526094246], [29.88937417930778, -97.93733549407705], [29.890276734118757, -97.93657606896521], [29.890293882904153, -97.93637964516837], [29.89025329936333, -97.93624498587948], [29.89012315187703, -97.93628905788569], [29.890087933200046, -97.93628248585865]];
+var polygon_R20 = L.polygon(latlngs_Red20, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R20.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>JCK / Sessom (R10)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red21 = [[29.889998857781187, -97.93774700949717], [29.890185523441584, -97.93710268969456], [29.890061079706822, -97.93705005961166], [29.88977762395326, -97.93731958943007], [29.889602019250066, -97.93745674661653], [29.889537031605325, -97.93754765312336], [29.88960616739615, -97.9375763604413], [29.889629673554115, -97.93756200678233]];
+var polygon_R21 = L.polygon(latlngs_Red21, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R21.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>State St. (R15)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red22 = [[29.890182368916744, -97.93778612365622], [29.8902899182501, -97.93743878283018], [29.890524570938275, -97.93751772392702], [29.890581278588378, -97.93748389202838], [29.89059301120161, -97.93794851676971], [29.89043070992929, -97.93797558228863], [29.890381823952104, -97.93792145125079], [29.890303606338758, -97.93783123285442]];
+var polygon_R22 = L.polygon(latlngs_Red22, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R22.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Aqua Sports (R16)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red23 = [[29.89077288958758, -97.9383576316135], [29.890811840256468, -97.93833215062827], [29.89074440326786, -97.938165853672], [29.89074905409613, -97.93813232605986], [29.890765331993343, -97.93810818617912], [29.89084672143958, -97.93805856531314], [29.890833995188622, -97.93799692811642], [29.8907566752064, -97.93803850235548], [29.89071714316225, -97.93797144713119], [29.89065319423409, -97.93805325450481]];
+var polygon_R23 = L.polygon(latlngs_Red23, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R23.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Ag. / Sessom (R7)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red24 = [[29.89103011589178, -97.93789082948561], [29.891072045824373, -97.93786901849187], [29.891169060110567, -97.93783298293697], [29.891229899531066, -97.93804824796358], [29.891192902591246, -97.93805204117989], [29.891203590597478, -97.93812031907339], [29.891151794864196, -97.93814118176306], [29.89112877452965, -97.93807859369403], [29.891087666776187, -97.93808712843071]];
+var polygon_R24 = L.polygon(latlngs_Red24, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R24.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Physical Plant (R6)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red25 = [[29.891045548148302, -97.93753937303995], [29.89111744828164, -97.93760874905831], [29.891093251126055, -97.9376502151854], [29.89119902721922, -97.93772517318463], [29.891311025308887, -97.93771879378065], [29.891395369466178, -97.93769646586668], [29.89151289809442, -97.93759997737826], [29.891979554508374, -97.93692695025003], [29.891533638427987, -97.93662871310941], [29.89116658461201, -97.93718034452209], [29.891203581561594, -97.93722206990145], [29.89113616488577, -97.93732733165949], [29.891104922997005, -97.93726474359046], [29.891053127212455, -97.93728750288827], [29.89107285894308, -97.93735293586954], [29.89102270745342, -97.93737569516736], [29.891000509242154, -97.93730836557799], [29.890902672635157, -97.93735009095735], [29.89092240439555, -97.93745724931796], [29.89088540734159, -97.93750276791361]];
+var polygon_R25 = L.polygon(latlngs_Red25, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R25.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Sessom Lot (R2)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red26 = [[29.890756294833587, -97.93525060991773], [29.890679055230954, -97.93513558146236], [29.89063603567948, -97.93513219827248], [29.890556206754894, -97.93522454966401], [29.890638960397826, -97.93533452799069], [29.890689396828034, -97.93531254406355], [29.890762066036544, -97.93547280605155], [29.89082717760099, -97.935429890708], [29.89072253399455, -97.93528371031903]];
+var polygon_R26 = L.polygon(latlngs_Red26, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R26.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Tennis Center (R38)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red27 = [[29.88987519910747, -97.93564131166953], [29.889951248216757, -97.93555518971569], [29.889943643308357, -97.93547385231315], [29.88987658181896, -97.9353582256159], [29.88987796453056, -97.93533270799996], [29.889823347408285, -97.9352649268305], [29.889772187039146, -97.93523861178906], [29.889761125334253, -97.93518039972767], [29.889582063812664, -97.93516684349294], [29.889601421830175, -97.93524419376627], [29.889555462604193, -97.93524669460197], [29.889497907899962, -97.93528223387084], [29.88947000257685, -97.93536202958776], [29.88943105138233, -97.93538214615545], [29.88943628363307, -97.93550820997712], [29.889522325049985, -97.9355390553803], [29.889526975935272, -97.93543646088712], [29.889672646756228, -97.93538823562622], [29.88968923932785, -97.93533720039433], [29.889790868771367, -97.93533002356462], [29.889840503960976, -97.93534301878243], [29.889817038555993, -97.93543774809862], [29.889843437136214, -97.93565314451995]];
+var polygon_R27 = L.polygon(latlngs_Red27, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R27.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Freeman (R11)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red28 = [[29.88893817795412, -97.9336109373163], [29.888759252481897, -97.93358387179738], [29.88865945519975, -97.93352456712704], [29.88874380160068, -97.93336827172938], [29.888823999751796, -97.9334049533023], [29.888953975931226, -97.93342568636456], [29.888954667293408, -97.93347672159643], [29.888990618120676, -97.93348629070243], [29.88898301313907, -97.93355805899728], [29.888951901844624, -97.93356124869926]];
+var polygon_R28 = L.polygon(latlngs_Red28, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R28.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Strahan Reserve (R13)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red29 = [[29.88705327008184, -97.93212640668138], [29.886991737654583, -97.9320235387921], [29.886310038774642, -97.93275318313232], [29.886378485423432, -97.93284089993712], [29.886436561331035, -97.93279624410921], [29.88644900616397, -97.9328074080662], [29.88642273373704, -97.9328568484471], [29.88673523689836, -97.93322525903417], [29.886843091746872, -97.93311441688802], [29.88701524443148, -97.93331776039336], [29.88711687660015, -97.93319176716341], [29.88664998956194, -97.93260779683946], [29.886617723592558, -97.93264050100831], [29.886601101727262, -97.93262922370874], [29.886649989558528, -97.93257396494099], [29.886679322245758, -97.93260103045989], [29.887000025734267, -97.93226158373868], [29.886973626401044, -97.93221196362069]];
+var polygon_R29 = L.polygon(latlngs_Red29, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R29.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Jowers (R14)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red30 = [[29.88851867096352, -97.93123411949027], [29.888771710309584, -97.93096618452283], [29.888737142130786, -97.93091993384392], [29.888767562128777, -97.93087527801602], [29.888603017483582, -97.93067592164144], [29.8885615355974, -97.93070462895939], [29.888526967345705, -97.93066635253547], [29.88826286550727, -97.93094864116186]];
+var polygon_R30 = L.polygon(latlngs_Red30, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R30.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Strahan Expansion (R41)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red31 = [[29.894507165807386, -97.92962040618815], [29.894657149247287, -97.92943399266461], [29.894624594721375, -97.92930122332051], [29.894661799894724, -97.92938437179717], [29.89475248744233, -97.92926903681138], [29.894707143678843, -97.9292194159454], [29.894761788724605, -97.92913090304936], [29.894674589169263, -97.9290678711385], [29.8946304080321, -97.92910408095962], [29.89464435997227, -97.92904909567571], [29.894329278178606, -97.9287781925631], [29.894292072882866, -97.92881574348873], [29.89414906489575, -97.92873795942705], [29.89396536327932, -97.929006180327], [29.8939932673439, -97.92904373125259], [29.89394797910827, -97.92911625945322], [29.893898894840095, -97.92925580891637], [29.894053060841205, -97.92939535837857], [29.89420100467485, -97.9291880277476], [29.89439392184641, -97.9293634578015], [29.89440729248869, -97.92959010446322]];
+var polygon_R31 = L.polygon(latlngs_Red31, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R31.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Meadows Center</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red32 = [[29.889869806375582, -97.92592705253985], [29.88993491852286, -97.925817081972], [29.88993491852286, -97.92570979361312], [29.889817484083565, -97.92554617886586], [29.8898651555063, -97.92550326352232], [29.889790741568163, -97.92537317638718], [29.88974423282859, -97.92540268068586], [29.889730280202514, -97.925389269641], [29.889680283276284, -97.92544023161146], [29.88970935125969, -97.9254737592236], [29.88967214423945, -97.92550996904475], [29.889734931078113, -97.9256152457469], [29.889774463511795, -97.92558372979147], [29.88980505632148, -97.92563472750315], [29.889773945283615, -97.92566742194859], [29.88983685870573, -97.92577427696536], [29.889879722772758, -97.9257511516259], [29.889839624129962, -97.92588671396062]];
+var polygon_R32 = L.polygon(latlngs_Red32, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R32.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Endzone Complex (R39)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red33 = [[29.885107454947526, -97.93635704408855], [29.88511575161359, -97.93628049124071], [29.885136493275766, -97.93622945600882], [29.88579054481349, -97.93633950072737], [29.88578224820358, -97.93638894110826], [29.88589010407862, -97.93640807932023], [29.88588872131171, -97.93647665791308], [29.88579469311819, -97.9364623042541], [29.885787779276946, -97.93652131374097], [29.885205249848035, -97.93642070744367], [29.88519818593555, -97.93636826688535]];
+var polygon_R33 = L.polygon(latlngs_Red33, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R33.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>River House (R19)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red34 = [[29.88986474604505, -97.93815491875904], [29.889841725413255, -97.9380126731476], [29.889784995976534, -97.93793111899706], [29.88976361965867, -97.93791784273998], [29.889711823177116, -97.9379131012196], [29.889720867009167, -97.93785620297503], [29.889766908323253, -97.93785809958318], [29.88979075113825, -97.9378287021568], [29.88981541611327, -97.93779930473045], [29.88982610426807, -97.937797408121], [29.889876510128417, -97.93780970815746], [29.889902671263183, -97.93788078669547], [29.88987999828083, -97.93795991186015], [29.88990441533856, -97.93811816218947]];
+var polygon_R34 = L.polygon(latlngs_Red34, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red35 = [[29.88983128014134, -97.93817583282915], [29.889455832963844, -97.93816906644939], [29.889277886144583, -97.93816681099044], [29.888992388397234, -97.93827958398592], [29.889023675861512, -97.93832920410391], [29.8893834809947, -97.9382299638679], [29.88958293762859, -97.93824800754716], [29.889837146491377, -97.9382547739272]];
+var polygon_R35 = L.polygon(latlngs_Red35, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red36 = [[29.889432517817397, -97.93849370442224], [29.88918751118683, -97.93844249600212], [29.888836443580132, -97.93858568991904], [29.88884959836017, -97.93860844921687], [29.889141469602343, -97.93848422138196], [29.88940620840876, -97.93850698067938]];
+var polygon_R36 = L.polygon(latlngs_Red36, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red37 = [[29.889231775299905, -97.93856959465141], [29.88883188248803, -97.9387071777079], [29.888859259063878, -97.9386496634802], [29.889234708492218, -97.93852674091407]];
+var polygon_R37 = L.polygon(latlngs_Red37, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red38 = [[29.888903813080447, -97.9381961964843], [29.888916967851582, -97.93821136934952], [29.88906084805152, -97.93804731274258], [29.88913648784281, -97.93789179087406], [29.889282834234237, -97.93774385543703], [29.889271323851805, -97.93772583765957], [29.889129088302237, -97.93786523835878], [29.88905344850408, -97.9380207602308]];
+var polygon_R38 = L.polygon(latlngs_Red38, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red39 = [[29.888851900692867, -97.93846117572436], [29.888837366577203, -97.93844575302276], [29.888715861287345, -97.93857047573997], [29.88873039542072, -97.93858992175501]];
+var polygon_R39 = L.polygon(latlngs_Red39, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red40 = [[29.888818762906045, -97.9383337707982], [29.88880190332609, -97.93831901864884], [29.888707722171734, -97.93846050517212], [29.888722256306306, -97.93847190456025]];
+var polygon_R40 = L.polygon(latlngs_Red40, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red41 = [[29.889407683696632, -97.9377007694707], [29.88938442924021, -97.93767797069442], [29.889330943969846, -97.93776111917255], [29.88925769235735, -97.93793009833777], [29.889275133222352, -97.93794082717366], [29.889355361162053, -97.93777989463534]];
+var polygon_R41 = L.polygon(latlngs_Red41, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red42 = [[29.89018704968337, -97.9399271995483], [29.890223093798316, -97.93982795781633], [29.890214954805753, -97.93974480933821], [29.89023123279019, -97.93958924121785], [29.890213210735944, -97.93953693814125], [29.890164958122746, -97.93951212770826], [29.890142285200056, -97.93955839581302], [29.89013007670086, -97.93971195227974], [29.89015798183917, -97.93982661671329]];
+var polygon_R42 = L.polygon(latlngs_Red42, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_R42.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Boiler Plant (R32)</strong></span><br><span style='color: #FF0000;'><b>Red/Restricted</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Red43 = [[29.890435585221056, -97.94016306638999], [29.890385007292956, -97.94013087988233], [29.890504766483456, -97.9399055743287], [29.89054139183823, -97.93993105531393]];
+var polygon_R43 = L.polygon(latlngs_Red43, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red44 = [[29.89109643843891, -97.94110698780736], [29.89124031548926, -97.94112405728073], [29.89125346995206, -97.9410216404405], [29.891101371369782, -97.94102638196087]];
+var polygon_R44 = L.polygon(latlngs_Red44, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red45 = [[29.891114849834445, -97.94087139735676], [29.891145080101936, -97.94088078508815], [29.89116584039295, -97.94077098768773], [29.891150143912302, -97.94070795577689]];
+var polygon_R45 = L.polygon(latlngs_Red45, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red46 = [[29.89104113006692, -97.94031580904574], [29.89110265999467, -97.94033096013021], [29.891171103352807, -97.94006143031177], [29.89109367247948, -97.9400478740783]];
+var polygon_R46 = L.polygon(latlngs_Red46, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red47 = [[29.89137393366954, -97.93945623608052], [29.891330914417985, -97.93943706467127], [29.891337758391067, -97.93937165633392], [29.89099849230251, -97.93922054051998], [29.890971116314176, -97.9392250514398], [29.891001425443676, -97.9391382162333], [29.891007291725728, -97.93915625991256], [29.89140717580576, -97.93934233535508]];
+var polygon_R47 = L.polygon(latlngs_Red47, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red48 = [[29.891195629042386, -97.93909819036043], [29.891241257910487, -97.93898655079067], [29.891140321295488, -97.93894189496278], [29.891105753938085, -97.93900090444964], [29.891072569263706, -97.93900249930063], [29.89106012500798, -97.93898974049267], [29.891028323014023, -97.9390646984895], [29.89105597692238, -97.93905193968155], [29.891087018365944, -97.93905890289145]];
+var polygon_R48 = L.polygon(latlngs_Red48, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red49 = [[29.890849885922563, -97.93933481211604], [29.890808404971363, -97.93931886360608], [29.8909022859108, -97.93904108924978], [29.89093949247192, -97.93905450029463]];
+var polygon_R49 = L.polygon(latlngs_Red49, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Red50 = [[29.88973381052175, -97.94391882969211], [29.889693115352593, -97.94393224073751], [29.88957626198766, -97.94379075420912], [29.889621608085413, -97.94376996708871]];
+var polygon_R50 = L.polygon(latlngs_Red50, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#FF0000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Green3 = [[29.88632993565887, -97.94763951435263], [29.886064826349386, -97.94743566646224], [29.885639254667883, -97.94822691814201], [29.885909016163126, -97.94841467277789]];
+var polygon_G3 = L.polygon(latlngs_Green3, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G3.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Academy St. Garage (304)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.<br>Garage Clearance: 7'8");
+var latlngs_Green4 = [[29.88601389540376, -97.9474714448965], [29.885911942913005, -97.94766300232789], [29.88583630067508, -97.94760041425626], [29.885735992401507, -97.94755868887516], [29.8857623027781, -97.9475074804529], [29.88569817122296, -97.9474126500413], [29.885615951220128, -97.94735575179436], [29.885541720840045, -97.94728082257781], [29.885682997026542, -97.9471158667233], [29.88570799649518, -97.94715677041182], [29.88573357734031, -97.94715609985954], [29.885757995413634, -97.94711989003692], [29.885973688139547, -97.94727679926632], [29.88595101426356, -97.94731837350712], [29.885977176428874, -97.94732977289469], [29.886000431680106, -97.94728953975844], [29.8860481049282, -97.94733446676061], [29.885991710961527, -97.94744577843758]];
+var polygon_G4 = L.polygon(latlngs_Green4, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G4.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Academy St. (304)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Green5 = [[29.886034540187513, -97.94850518074077], [29.886020562838958, -97.94852699173542], [29.885989319346915, -97.9484900078749], [29.885860234285246, -97.94864078822738], [29.885863523078605, -97.94867872039202], [29.8861151154519, -97.94906183524492], [29.88614964768845, -97.94902769629675], [29.88619651284749, -97.94906942167785], [29.886248311160045, -97.94900398869397], [29.886346152335186, -97.94908838776028], [29.886448104385853, -97.94896131500855], [29.886579655262437, -97.94914338939587], [29.886617476106572, -97.94910450892712], [29.886601854455296, -97.94916614869466], [29.886676673920743, -97.94921451220458], [29.886700517474875, -97.949168993607], [29.88671696130198, -97.94918416647286], [29.886715316919386, -97.94921735711692], [29.886715316919386, -97.94922020202927], [29.88667420734586, -97.94921830542104], [29.88668356881746, -97.94936772733129], [29.886827657303222, -97.94954642302058],  [29.886956299374667, -97.94943376911793], [29.886859790969975, -97.94930368198298], [29.886831303532027, -97.94915079606521], [29.886802816084632, -97.94910251630671], [29.886691191726246, -97.9490093095418], [29.886513871525114, -97.94880479110216], [29.886468465056225, -97.94882813649157], [29.886496952597867, -97.9487718101008], [29.886369630663246, -97.94863434689175], [29.88632602722417, -97.94866988616212], [29.886288237558635, -97.94864574628257], [29.886082789981796, -97.94844381847317]];
+var polygon_G5 = L.polygon(latlngs_Green5, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G5.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Llano Drive (301)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Green6 = [[29.886448710147352, -97.95214367293138], [29.887037763802944, -97.95312131661589], [29.88775402623937, -97.95350886541351], [29.88787294189685, -97.95333183694548], [29.88782454600686, -97.95328877596678], [29.887805187644275, -97.95331110388167], [29.887177421554746, -97.95297618516524], [29.887145618322098, -97.95294428814398], [29.88673355812479, -97.95226488160502], [29.886681013414005, -97.95214367292421], [29.886687927193318, -97.95206393037105], [29.88659251699416, -97.95196026505873]];
+var polygon_G6 = L.polygon(latlngs_Green6, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G6.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Blanco Garage (303)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.<br>Garage Clearance: 8'2");
+var latlngs_Green7 = [[29.89034428549871, -97.95296543299864], [29.890694525627264, -97.9525936977852], [29.89128647798131, -97.9533011326515], [29.89095432737381, -97.95370511020488]];
+var polygon_G7 = L.polygon(latlngs_Green7, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G7.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Speck Garage (306)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.<br>Garage Clearance: 7' ");
+var latlngs_Green8 = [[29.889523836734394, -97.94664391296672], [29.88959716632233, -97.94670593811682], [29.889685161756674, -97.9463157435362], [29.88944757390567, -97.9460146396257], [29.8893077585682, -97.94613192354589], [29.889498415797956, -97.94635408635625], [29.889453440279198, -97.94641160058633], [29.88957467858777, -97.94654580045656]];
+var polygon_G8 = L.polygon(latlngs_Green8, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G8.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>College Inn (202)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Green9 = [[29.89038477596312, -97.94505246306466], [29.89022116578072, -97.94486185393899], [29.890240897676044, -97.94480780060438], [29.890211299831623, -97.94477650656854], [29.89024583064926, -97.94472719475453], [29.890273784162076, -97.94476323031782], [29.89038850783922, -97.9445031942112], [29.890460595912348, -97.94441870462941], [29.89050070941322, -97.94445357334752], [29.89052745173817, -97.944405293584], [29.89063849044543, -97.94449246537921], [29.890611748150274, -97.94451928747007], [29.890617561693308, -97.94453739238138], [29.89065941919643, -97.944528004647], [29.890683836063225, -97.94459774208318], [29.89067685981619, -97.94466010344438], [29.890639653157038, -97.944631940249], [29.890630351490092, -97.94467820835568], [29.89067046492262, -97.94469564271475], [29.890646048052567, -97.94476739180774], [29.89058791262358, -97.94483712924391], [29.89054838051248, -97.94480427218264], [29.89054024154526, -97.94481634211989], [29.890569890632467, -97.94485523415159], [29.89049140773536, -97.9449618519627], [29.890453038296506, -97.94492497158778], [29.89043501628125, -97.94494777036067], [29.890468153530758, -97.94498867404918], [29.8904344349259, -97.94504097712634]];
+var polygon_G9 = L.polygon(latlngs_Green9, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G9.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Jackson (204)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Green10 = [[29.889540971973734, -97.94354618494843], [29.889604561021383, -97.94352815196429], [29.88998070036381, -97.94397004590348], [29.889926052696765, -97.94399083302389]];
+var polygon_G10 = L.polygon(latlngs_Green10, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Green11 = [[29.890224049693185, -97.94335453318669], [29.89020079542721, -97.94336660312756], [29.889883490094974, -97.94299836420194], [29.889899322876126, -97.94297662036682]];
+var polygon_G11 = L.polygon(latlngs_Green11, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+var latlngs_Green12 = [[29.887277582499756, -97.94286337255056], [29.88733020243233, -97.94246698143012], [29.886833600712656, -97.9423588747609], [29.886772758610036, -97.94241197979139], [29.886716849618104, -97.94275336927312]];
+var polygon_G12 = L.polygon(latlngs_Green12, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G12.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Tower Garage (106)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.<br>Garage Clearance: 6'2");
+var latlngs_Green13 = [[29.886410105998042, -97.94301730660369], [29.886435105284345, -97.94284698632686], [29.88628627222858, -97.9428255286564], [29.886262435664317, -97.94289593664485], [29.88626069152525, -97.94282150534278], [29.886149066560268, -97.94276786116345], [29.88613395066749, -97.94272025195366], [29.885993837882836, -97.9426055875173], [29.885906049274315, -97.94277993110451], [29.8860421452816, -97.94287133958515], [29.88608574884482, -97.94284049418067], [29.88611132959301, -97.9428559168829], [29.88609795784087, -97.94289816167468], [29.886200280781793, -97.94298399236536], [29.88624446565563, -97.94298131015627]];
+var polygon_G13 = L.polygon(latlngs_Green13, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G13.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Admissions (105)</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday.");
+var latlngs_Green14 = [[29.885738748430104, -97.93963420166958],[29.886073377961694, -97.93966131413765], [29.88603604331755, -97.93998506890351], [29.885964139519068, -97.93997868949924], [29.885940632496784, -97.94006162175454], [29.885765021037276, -97.94002972473326], [29.88577331764861, -97.93994519762691], [29.885709710277304, -97.93992765426523]];
+var polygon_G14 = L.polygon(latlngs_Green14, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#008000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_G14.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Edward Gary Residential</strong></span><br><span style='color: #00FF00;'><b>Residence Hall</b></span><br>Residents of Sterry, Butler, and Lantana Halls, ONLY, may also park in the Green Residence Hall spaces located on the top levels of the Edward Gary Garage, as indicated by signage.<br>At no times are Green permits valid in the Pay-to-Park levels of the Edward Gary Street Garage.<br>Garage Clearance: 8'2");
+var popupContent = document.getElementById('popup-content').innerHTML;
+var latlngs_Black = [[29.885738748430104, -97.93962303771214], [29.886073377961694, -97.93966450383978], [29.886121774701802, -97.93935669758457], [29.88586734586231, -97.93931682630799], [29.88584245604968, -97.9393949740101], [29.88577331764861, -97.9393901894569]];
+var polygon_B = L.polygon(latlngs_Black, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#000000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_B.bindPopup(popupContent);
+var popupContent1 = document.getElementById('popup-content1').innerHTML;
+var latlngs_Black1 = [[29.890065116639516, -97.94559248337512], [29.8898162953153, -97.94587143311986], [29.889293070878384, -97.94525988944874], [29.88954189350864, -97.94499703295851]];
+var polygon_B1 = L.polygon(latlngs_Black1, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#000000',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_B1.bindPopup(popupContent1);
+var latlngs_Purple = [[29.889208151730266, -97.93328827297412], [29.889230275261546, -97.93334648503793], [29.88972805342466, -97.93348204737293], [29.889775757034023, -97.93359049724522], [29.8900246450649, -97.9333791794818], [29.88994859601144, -97.93324600942267], [29.890014966098423, -97.93308732174386], [29.89006128686149, -97.93313436985024], [29.89025417458753, -97.93285846062011], [29.89026800165006, -97.93282496874778], [29.890008052553025, -97.9324198765855], [29.889947904660197, -97.93257776684078], [29.890031558616204, -97.93261046128757], [29.89001704016607, -97.93266388879817], [29.890066817700617, -97.93271811373434], [29.889880151815746, -97.93322607378258], [29.88923926294352, -97.9330649938267]];
+var polygon_P = L.polygon(latlngs_Purple, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#7F3FBF',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_P.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Sewell North (P14)</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday for vehicles displaying a valid Texas State permit of any color, with the exception of the Gold Mill Street/ Residence Hall permit");
+var latlngs_Purple1 = [[29.889568661020018, -97.93145416876185], [29.891441969824324, -97.92739885173735], [29.888633948871327, -97.93035801520473]];
+var polygon_P1 = L.polygon(latlngs_Purple1, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#7F3FBF',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_P1.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Aquarena Lot (P9)</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday for vehicles displaying a valid Texas State permit of any color, with the exception of the Gold Mill Street/ Residence Hall permit");
+var latlngs_Purple2 = [[29.88843122868425, -97.93132667270739], [29.888184838173043, -97.93102669652691], [29.887701832784852, -97.93154319686774], [29.887934536077783, -97.9318296402882]];
+var polygon_P2 = L.polygon(latlngs_Purple2, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#7F3FBF',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_P2.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Strahan Lot (P8)</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday for vehicles displaying a valid Texas State permit of any color, with the exception of the Gold Mill Street/ Residence Hall permit");
+var latlngs_Purple3 = [[29.88852900252323, -97.93055304992347], [29.888468382751483, -97.93046734244335], [29.887095628364012, -97.93188828223433], [29.887140604946552, -97.93204616443458]];
+var polygon_P3 = L.polygon(latlngs_Purple3, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#7F3FBF',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_P3.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Jowers Access</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday for vehicles displaying a valid Texas State permit of any color, with the exception of the Gold Mill Street/ Residence Hall permit");
+var latlngs_Purple4 = [[29.887950205835125, -97.9272157230846], [29.889209779347905, -97.92750400753583], [29.890087853840882, -97.92742055676933], [29.89042987326415, -97.92731055349188], [29.890607459816664, -97.92711330624942], [29.890600882542834, -97.92680226249941], [29.890285172889513, -97.92641156121316], [29.889564956495644, -97.92557326038796], [29.887937050931225, -97.92720813665231]];
+var polygon_P4 = L.polygon(latlngs_Purple4, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#7F3FBF',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_P4.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Bobcat Stadium West (P10W)</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday for vehicles displaying a valid Texas State permit of any color, with the exception of the Gold Mill Street/ Residence Hall permit");
+var latlngs_Purple5 = [[29.890617325759962, -97.9243404651036], [29.892139952817782, -97.92469702745116], [29.892278073344073, -97.92289145641449], [29.891932771669488, -97.9228193853017]];
+var polygon_P5 = L.polygon(latlngs_Purple5, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#7F3FBF',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_P5.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Bobcat Stadium East (P10E)</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday for vehicles displaying a valid Texas State permit of any color, with the exception of the Gold Mill Street/ Residence Hall permit");
+var latlngs_Purple6 = [[29.892707382016848, -97.93015911124819], [29.892761643366086, -97.9302785975668], [29.893034593947533, -97.93005100457898], [29.89298033274691, -97.92994289790975]];
+var polygon_P6 = L.polygon(latlngs_Purple6, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#7F3FBF',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_P6.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Meadows Center (P15)</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span><br>Reserved from 7 a.m. until 5 p.m. Monday through Friday for vehicles displaying a valid Texas State permit of any color, with the exception of the Gold Mill Street/ Residence Hall permit");
+var latlngs_Purple7 = [[29.895301293180925, -97.92476328783398], [29.895257297952526, -97.92479937519404], [29.894895558667244, -97.92425919253607], [29.894938576380227, -97.92422310517603]];
+var polygon_P7 = L.polygon(latlngs_Purple7, {
+    color: '#000000', 
+    weight: 1, 
+    fillColor: '#7F3FBF',  
+    fillOpacity: 0.7      
+}).addTo(map);
+polygon_P7.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Bert Brown</strong></span><br>Reserved Reserved from 7 a.m. until 5 p.m. Monday through Friday for vehicles displaying a valid Texas State permit of any color");
+var stripes1 = new L.StripePattern({
+    weight: 4,
+    spaceWeight: 4,
+    color: '#FFED00',
+    spaceColor: '#7F3FBF',
+    opacity: 1.0,
+    spaceOpacity: 1
+});
+stripes1.addTo(map);
+var latlngs_YP = [[29.895799370515768, -97.92212244074041], [29.89629465739274, -97.9215591768369], [29.89464369156165, -97.91961725749957], [29.893760064812255, -97.92057480613323], [29.89385075318039, -97.9206820944966], [29.894048407030137, -97.92078938285997], [29.894713451231812, -97.92081084052988]];
+var polygon_YP = L.polygon(latlngs_YP, {
+    color: '#000000', 
+    weight: 1,
+    fillPattern: stripes1,
+    fillOpacity: 0.7     
+}).addTo(map);
+polygon_YP.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Mill Street (P12)</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span> & <span style='color: #FFED00;'><b>Mill St. Residence Hall</b></span><br>Open to vehicles displaying a valid Texas State permit of any color.<br>Mill Street/Residence Hall (Gold) area permits are valid from 7 a.m. to 5 p.m. Monday through Friday only in the Mill Street Lot (P12).");
+var latlngs_YP1 = [[29.892999355316938, -97.92150701499682], [29.89315187548105, -97.92168857952711], [29.893210537020494, -97.92162880983702], [29.893253555460806, -97.92167842995711], [29.89387732077175, -97.92096344914803], [29.893636809846495, -97.92071196536389], [29.89300424378554, -97.92142356297877], [29.89302770844022, -97.92146754444884]];
+var polygon_YP1 = L.polygon(latlngs_YP1, {
+    color: '#000000', 
+    weight: 1,
+    fillPattern: stripes1,
+    fillOpacity: 0.7     
+}).addTo(map);
+polygon_YP1.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Mill Street (P12)</strong></span><br><span style='color: #7F3FBF;'><b>Commuter/Perimeter</b></span> & <span style='color: #FFED00;'><b>Mill St. Residence Hall</b></span><br>Open to vehicles displaying a valid Texas State permit of any color.<br>Mill Street/Residence Hall (Gold) area permits are valid from 7 a.m. to 5 p.m. Monday through Friday only in the Mill Street Lot (P12).");
+var latlngs_inner = [[29.894278439280317, -97.92184153160161], [29.894132177590443, -97.92199968005255], [29.894164446078037, -97.92203901315705], [29.89411605324265, -97.92208765611447], [29.89479355081428, -97.92291937091913], [29.894832956145088, -97.92286993053847], [29.894867522209836, -97.92291777607036], [29.894819821032804, -97.92297279842947], [29.894786637594997, -97.92293691428056], [29.894354560566008, -97.92339064940015], [29.893760668418075, -97.92266302454341], [29.893562197832598, -97.92287052686375], [29.893544599434296, -97.92286488821692], [29.893546554811785, -97.92281301263682], [29.893307020776984, -97.92279158576775], [29.89326889081718, -97.92284458907784], [29.89328062311406, -97.92278820257775], [29.892978516024737, -97.92240364665788], [29.893009802238574, -97.92191082865561], [29.893376436821313, -97.92192548914667], [29.894089170596313, -97.92110901263909], [29.894599071121622, -97.92111294328367], [29.895468738613893, -97.92219789683409], [29.89501530330373, -97.92267667114349], [29.89439793036871, -97.92188541948408], [29.8943549117739, -97.92192967593397]];
+var latlngs_outer = [[29.894251151279537, -97.9237323852245], [29.895618583667712, -97.92230579098026], [29.895595060494436, -97.92225760013433], [29.895632877917954, -97.92228035943312], [29.89565425297706, -97.92225665183021], [29.89560657014659, -97.92211535451696], [29.89465701936102, -97.92097359639124], [29.89466538202693, -97.92098011127774], [29.89434557459774, -97.92094407572401], [29.894004390735574, -97.92092416134113], [29.893950130062922, -97.9209810595881], [29.893956707115716, -97.92107778660791], [29.893918066924286, -97.92104364765973], [29.89329899967295, -97.92174065116457], [29.892875598212026, -97.9217008223929], [29.892816404078545, -97.92245377583603], [29.89296767790401, -97.92266809256623], [29.89305564682161, -97.92277714753632], [29.893210208838063, -97.92296870496182], [29.893500423039185, -97.92299810238889], [29.893567838116624, -97.92299336086994], [29.89412359968737, -97.92365907033773], [29.894163061929007, -97.92362967291015]];
+var polygon_GR = L.polygon([latlngs_outer, latlngs_inner], {
+    color: '#000000', 
+    weight: 1,
+    fillColor: '#999999', 
+    fillOpacity: 0.7     
+}).addTo(map);
+polygon_GR.bindPopup("<span style='font-size: 15px;color: #501214;'><strong>Bobcat Village (BV)</strong></span><br><span style='color: #999999;'><b>Bobcat Village Resident</b></span><br>Bobcat Village Apartment Resident (Silver) parking areas are reserved 24/7 for those residents.");
+var legend = L.control({position: 'bottomleft'});
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend');
+        var categories = [
+            {label: "Pay to Park", color: "#000000"},
+            {label: "Residence Hall", color: "#008000"},
+            {label: "Bobcat Village", color: "#999999"},
+            {label: "Mill St. Residence Hall", color: "#FFED00"},
+            {label: "Balcones", color: "#0000FF"},
+            {label: "Cypress", color: "#FFA500"},
+            {label: "Perimeter", color: "#7F3FBF"},
+            {label: "Restricted", color: "#FF0000"}
+        ];
+     div.style.display = "inline-block";
+    div.style.padding = "6px"; // Reduced padding
+    div.style.backgroundColor = "white";
+    div.style.borderRadius = "5px";
+    div.style.boxShadow = "0 0 15px rgba(0, 0, 0, 0.2)";
+    div.style.fontSize = "12px"; // Smaller font size to reduce overall size
+    div.style.lineHeight = "20px"; // Adjusted for better vertical spacing
+    div.style.maxWidth = "150px";
+        categories.forEach(function(category) {
+            div.innerHTML += '<i style="background:' + category.color + '; width: 18px; height: 18px; display: inline-block; margin-right: 8px;"></i>' +'<span style="white-space: nowrap;">' + category.label + '</span>' + '<br>';
+        });
+        return div;
+    };
+    legend.addTo(map);
+var payToParkLayer = L.layerGroup([polygon_B, polygon_B1]);
+var payByAppLayer = L.layerGroup([marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8]);
+var residenceHallLayer = L.layerGroup([
+    polygon_G, polygon_G1, polygon_G2, polygon_G3, polygon_G4, polygon_G5,
+    polygon_G6, polygon_G7, polygon_G8, polygon_G9, polygon_G10, polygon_G11,
+    polygon_G12, polygon_G13, polygon_G14,polygon_RG,polygon_RG1
+]);
+var millStLayer = L.layerGroup([polygon_YP, polygon_YP1]);
+var perimeterLayer = L.layerGroup([
+    polygon_P, polygon_P1, polygon_P2, polygon_P3, polygon_P4, polygon_P5,
+    polygon_P6, polygon_P7
+]);
+var balconesLayer = L.layerGroup([polygon_Blue]);
+var cypressLayer = L.layerGroup([polygon_O]);
+var bobcatVillageLayer = L.layerGroup([polygon_GR]);
+var restrictedLayer = L.layerGroup([
+    polygon_R, polygon_R1, polygon_R2, polygon_R3, polygon_R4, polygon_R5,
+    polygon_R6, polygon_R7, polygon_R8, polygon_R9, polygon_R10, polygon_R11,
+    polygon_R12, polygon_R13, polygon_R14, polygon_R15, polygon_R16, polygon_R17,
+    polygon_R18, polygon_R19, polygon_R20, polygon_R21, polygon_R22, polygon_R23,
+    polygon_R24, polygon_R25, polygon_R26, polygon_R27, polygon_R28, polygon_R29,
+    polygon_R30, polygon_R31, polygon_R32, polygon_R33, polygon_R34, polygon_R35,
+    polygon_R36, polygon_R37, polygon_R38, polygon_R39, polygon_R40, polygon_R41,
+    polygon_R42, polygon_R43, polygon_R44, polygon_R45, polygon_R46, polygon_R47,
+    polygon_R48, polygon_R49, polygon_R50,polygon_RG,polygon_RG1
+]);
+var groupedOverlays = {
+    "Visitors": {
+        "Pay to Park Garages": payToParkLayer,
+        "Pay-by-App": payByAppLayer
+    },
+    "Students, Staff, & Faculty": {
+        "Residence Hall": residenceHallLayer,
+        "Mill St. Residence Hall": millStLayer,
+        "Perimeter": perimeterLayer,
+        "Balcones Apartments": balconesLayer,
+        "Cypress Apartments": cypressLayer,
+        "Bobcat Village": bobcatVillageLayer,
+        "Restricted": restrictedLayer
+    }
+};
+L.control.groupedLayers(null, groupedOverlays, { collapsed: true, position: 'topright' }).addTo(map);
+payToParkLayer.addTo(map);
+payByAppLayer.addTo(map);
+residenceHallLayer.addTo(map);
+millStLayer.addTo(map);
+perimeterLayer.addTo(map);
+bobcatVillageLayer.addTo(map);
+balconesLayer.addTo(map);
+cypressLayer.addTo(map);
+restrictedLayer.addTo(map);
+</script>
